@@ -1,0 +1,28 @@
+.sidebar {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    width: 20em;
+    height: 30em;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+
+.sidebar-content {
+    background-color: deeppink;
+    width: 25em;
+    display: none;
+    border-bottom-right-radius: 10px;
+}
+
+.hamburger {
+    display: flex;
+    background-color: deeppink;
+    height: 80px;
+    width: 50px;
+    border-radius: 0 40px 40px 0;
+    justify-content: center;
+    align-items: center;
+    padding-right: 8px;
+}
