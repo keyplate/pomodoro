@@ -1,17 +1,20 @@
-import Timer from './components/Timer';
+import Sidebar from './components/Sidebar/Sidebar';
+import Timer from './components/Timer/Timer';
+import Settings from './components/Settings/Settings';
 import './App.css';
-import Sidebar from './components/Sidebar';
+import Provider from './contexts/ConfigContext';
 function App() {
-    const config = {
-        sessionDurations: { focus: 600, rest: 120, longRest: 240},
-        sessionSequence: ['focus', 'rest', 'focus', 'rest', 'focus', 'longRest'],
-    }
     
     return (
-        <div className="app">
-            <Sidebar></Sidebar>
-            <Timer config={config}></Timer>
-        </div>
+        <Provider>
+            <div className="app">
+                <div className="app-content">
+                    <Sidebar></Sidebar>
+                    <Timer></Timer>
+                    <Settings></Settings>
+                </div>
+            </div>
+        </Provider>
     );
 }
 

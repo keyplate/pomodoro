@@ -1,4 +1,15 @@
-.app {
+.app-content {
     font-family: 'Montserrat', serif;
     z-index: 1;
+    display: flex;
+    justify-content: space-between;
+}
+
+.timer {
+    flex: 1 0 0;
+    display: flex;
+    justify-content: center;
+}
+
+.settings {
 }
