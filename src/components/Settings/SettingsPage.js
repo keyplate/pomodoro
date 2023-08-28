@@ -16,7 +16,7 @@ function SettingsPage() {
             <div className='settings-property'>
                 <label>Foucs session</label>
                 <input name='focus'
-                    value={toMinutes(config.focus)}
+                    value={toMinutes(config.focus)? toMinutes(config.focus) : ''}
                     type='number'
                     onChange={(e) => dispatch({type: SET_FOCUS_DURATION, payload: toSeconds(e.target.value)})}
                 />
@@ -24,15 +24,15 @@ function SettingsPage() {
             <div className='settings-property'>
                 <label>Short break</label>
                 <input name='break'
-                    value={toMinutes(config.break)}
+                    value={toMinutes(config.break)? toMinutes(config.break) : ''}
                     type='number'
-                    onChange={(e) => dispatch({type: SET_BREAK_DURATION, payload: toSeconds(e.target.input)})}
+                    onChange={(e) => dispatch({type: SET_BREAK_DURATION, payload: toSeconds(e.target.value)})}
                 />
             </div>
             <div className='settings-property'>
                 <label>Long break</label>
                 <input name='longBreak'
-                    value={toMinutes(config.longBreak)}
+                    value={toMinutes(config.longBreak)? toMinutes(config.longBreak) : ''}
                     type='number'
                     onChange={(e) => dispatch({type: SET_LONG_BREAK_DURATION, payload: toSeconds(e.target.value)})}
                 />
@@ -40,14 +40,14 @@ function SettingsPage() {
             <div className='settings-property'>
                 <label>Auto start break</label>
                 <input name='autoStartBreak'
-                    value={toMinutes(config.autoStartBreak)}
+                    checked={toMinutes(config.autoStartBreak)}
                     type='checkbox'
                     onChange={(e) => dispatch({type: SET_AUTO_START_BREAK, payload: e.target.checked})}/>
             </div>
             <div className='settings-property'>
                 <label>Auto start focus session</label>
                 <input name='autoStartFocus'
-                    value={toMinutes(config.autoStartFocus)}
+                    checked={toMinutes(config.autoStartFocus)}
                     type='checkbox'
                     onChange={(e) => dispatch({type: SET_AUTO_START_FOCUS, payload: e.target.checked})}/>
             </div>

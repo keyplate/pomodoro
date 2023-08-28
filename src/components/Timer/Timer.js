@@ -6,15 +6,16 @@ import './Timer.css';
 
 function Timer() {
     const {config} = useContext(ConfigContext);
-    const {sessionSequence} = config
-    const [sessionCounter, setSessionCounter] = useState(0);
+    const {sessionSequence, autoStartFocus, autoStartBreak} = config
+    const [sessionCounter, setSessionCounter] = useState(0);  //Starting session from the first one
     const [timePassed, setTimePassed] = useState(null);
     const intervalRef = useRef(1);
-    const currentSessionDuration = config[sessionSequence[sessionCounter]];
+    const currentSessionName = sessionSequence[sessionCounter]
+    const currentSessionDuration = config[currentSessionName];
     const FIVE_MINUTES = 300;
     
     
-    const handleStart = () => {
+    const startSession = () => {
         if (!timePassed) {
             setTimePassed(0);
         }
@@ -25,11 +26,12 @@ function Timer() {
             }, 1000)
     };
     
-    const handlePause = () => {
+    const pauseSession = () => {
         clearInterval(intervalRef.current);
     };
     
     const nextSession = () => {
+        handleAutoStart();
         //It was the last focus in the session, starting from the beginning
         if (sessionCounter === sessionSequence.length - 1) {
             setSessionCounter(0);
@@ -37,11 +39,20 @@ function Timer() {
         }
         setSessionCounter(sessionCounter + 1);
     };
+
+    const handleAutoStart = () => {
+        const shouldStartCurrentBreak = autoStartBreak && currentSessionName.includes('break');
+        const shouldStartCurrentFocus = autoStartFocus && currentSessionName.includes('focus');
+        if (shouldStartCurrentBreak || shouldStartCurrentFocus) {
+            startSession()
+            return;
+        }
+        pauseSession()
+    }
     
-    const handleSkip = () => {
+    const skipSession = () => {
         nextSession();
         setTimePassed(0);
-        handleStart();
     };
     
     const adjustSession = (minutes) => {
@@ -53,6 +64,7 @@ function Timer() {
     if (timePassed) {
         timeLeft = currentSessionDuration - timePassed;
     }
+
     if (timeLeft <= 0) {
         setTimePassed(0);
         nextSession();
@@ -67,9 +79,9 @@ function Timer() {
                 <Clock minutes={minutes} seconds={seconds}></Clock>
                 <div className="buttons">
                     <Button className="adjust plus-5" onClick={() => adjustSession(FIVE_MINUTES)}>+5</Button>
-                    <Button onClick={handleStart}>Start</Button>
-                    <Button onClick={handlePause}>Pause</Button>
-                    <Button onClick={handleSkip}>Skip</Button>
+                    <Button onClick={startSession}>Start</Button>
+                    <Button onClick={pauseSession}>Pause</Button>
+                    <Button onClick={skipSession}>Skip</Button>
                     <Button className="adjust minus-5" onClick={() => adjustSession(-FIVE_MINUTES)}>-5</Button>
                 </div>
             </div>
