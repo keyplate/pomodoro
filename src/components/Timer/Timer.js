@@ -1,16 +1,17 @@
 import { useContext, useRef, useState } from 'react';
-import './Timer.css';
+import { ConfigContext } from '../../contexts/ConfigContext';
 import Button from '../Button/Button';
 import Clock from '../Clock';
-import {ConfigContext} from '../../contexts/ConfigContext';
+import './Timer.css';
 
 function Timer() {
     const {config} = useContext(ConfigContext);
-    const {sessionDurations, sessionSequence} = config
+    const {sessionSequence} = config
     const [sessionCounter, setSessionCounter] = useState(0);
     const [timePassed, setTimePassed] = useState(null);
     const intervalRef = useRef(1);
-    const currentSessionDuration = sessionDurations[sessionSequence[sessionCounter]];
+    const currentSessionDuration = config[sessionSequence[sessionCounter]];
+    const FIVE_MINUTES = 300;
     
     
     const handleStart = () => {
@@ -39,6 +40,7 @@ function Timer() {
     
     const handleSkip = () => {
         nextSession();
+        setTimePassed(0);
         handleStart();
     };
     
@@ -64,11 +66,11 @@ function Timer() {
             <div className="timer">
                 <Clock minutes={minutes} seconds={seconds}></Clock>
                 <div className="buttons">
-                    <Button className="adjust plus-5" onClick={() => adjustSession(300)}>+5</Button>
+                    <Button className="adjust plus-5" onClick={() => adjustSession(FIVE_MINUTES)}>+5</Button>
                     <Button onClick={handleStart}>Start</Button>
                     <Button onClick={handlePause}>Pause</Button>
                     <Button onClick={handleSkip}>Skip</Button>
-                    <Button className="adjust minus-5" onClick={() => adjustSession(-300)}>-5</Button>
+                    <Button className="adjust minus-5" onClick={() => adjustSession(-FIVE_MINUTES)}>-5</Button>
                 </div>
             </div>
         </div>

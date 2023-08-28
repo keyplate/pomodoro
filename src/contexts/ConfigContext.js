@@ -1,20 +1,21 @@
-import { createContext, useState } from 'react';
+import { createContext, useReducer } from 'react';
+import settingsReducer from '../reducers/SettingsReducer';
 
 const ConfigContext = createContext({});
 
 function Provider({ children }) {
-    const [config, setConfig] = useState({
-        sessionDurations: {
-            focus: 600,
-            rest: 120,
-            longRest: 240
-        },
-        sessionSequence: ['focus', 'rest', 'focus', 'rest','focus', 'rest', 'focus', 'longRest'],
+    const [config, dispatch] = useReducer(settingsReducer, {
+        focus: 600,
+        break: 120,
+        longBreak: 240,
+        sessionSequence: ['focus', 'break', 'focus', 'break','focus', 'break', 'focus', 'longBreak'],
+        autoStartFocus: true,
+        autoStartBreak: true,
     });
     
     const configState = {
         config,
-        setConfig
+        dispatch
     };
     
     return (

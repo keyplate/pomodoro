@@ -1,11 +1,12 @@
 .modal-content {
     position: fixed;
-    inset: 10vh 10vw 30vh 10vw;
+    inset: 10vh 20vw 30vh 20vw;
     background: lightgrey;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     z-index: 2;
+    padding: 10px 20px;
 }
 
 .modal-close {

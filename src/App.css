@@ -1,7 +1,10 @@
-.app-content {
+html {
     font-family: 'Montserrat', serif;
-    z-index: 1;
+}
+
+.app-content {
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -12,4 +15,7 @@
 }
 
 .settings {
+    display: flex;
+    justify-content: flex-end;
 }
+

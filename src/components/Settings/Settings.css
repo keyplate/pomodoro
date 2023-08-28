@@ -1,0 +1,14 @@
+.settings {
+    font-family: 'Calibri', serif;
+}
+
+.settings-page {
+    flex-grow: 1;
+    padding: 10px;
+}
+
+.settings-property {
+    display: flex;
+    justify-content: space-between;
+    margin: 2em 0 0 0;
+}
