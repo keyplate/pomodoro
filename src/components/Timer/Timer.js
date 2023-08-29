@@ -3,17 +3,30 @@ import { ConfigContext } from '../../contexts/ConfigContext';
 import Button from '../Button/Button';
 import Clock from '../Clock';
 import './Timer.css';
+import useDidMountEffect from '../../hooks/UseDidMountEffect';
 
 function Timer() {
     const {config} = useContext(ConfigContext);
     const {sessionSequence, autoStartFocus, autoStartBreak} = config
     const [sessionCounter, setSessionCounter] = useState(0);  //Starting session from the first one
     const [timePassed, setTimePassed] = useState(null);
-    const intervalRef = useRef(1);
+    const [isPauesed, setIsPaused] = useState(true);
+    const intervalRef = useRef(null);
     const currentSessionName = sessionSequence[sessionCounter]
     const currentSessionDuration = config[currentSessionName];
     const FIVE_MINUTES = 300;
     
+    useDidMountEffect(() => {
+        handleAutoStart();
+    }, [sessionCounter]);
+
+    const handleStartStop = () => {
+        if (intervalRef.current) {
+            pauseSession();
+        } else {
+            startSession();
+        }
+    };
     
     const startSession = () => {
         if (!timePassed) {
@@ -24,31 +37,33 @@ function Timer() {
         intervalRef.current = setInterval(() => {
                 setTimePassed(currentPassed => currentPassed + 1)
             }, 1000)
+        setIsPaused(!isPauesed);
     };
     
     const pauseSession = () => {
         clearInterval(intervalRef.current);
+        intervalRef.current = null;
+        setIsPaused(true);
     };
     
     const nextSession = () => {
-        handleAutoStart();
         //It was the last focus in the session, starting from the beginning
         if (sessionCounter === sessionSequence.length - 1) {
             setSessionCounter(0);
-            return;
+        } else {
+            setSessionCounter(sessionCounter => sessionCounter + 1);
         }
-        setSessionCounter(sessionCounter + 1);
     };
 
     const handleAutoStart = () => {
         const shouldStartCurrentBreak = autoStartBreak && currentSessionName.includes('break');
         const shouldStartCurrentFocus = autoStartFocus && currentSessionName.includes('focus');
         if (shouldStartCurrentBreak || shouldStartCurrentFocus) {
-            startSession()
+            startSession();
             return;
         }
-        pauseSession()
-    }
+        pauseSession();
+    };
     
     const skipSession = () => {
         nextSession();
@@ -79,8 +94,7 @@ function Timer() {
                 <Clock minutes={minutes} seconds={seconds}></Clock>
                 <div className="buttons">
                     <Button className="adjust plus-5" onClick={() => adjustSession(FIVE_MINUTES)}>+5</Button>
-                    <Button onClick={startSession}>Start</Button>
-                    <Button onClick={pauseSession}>Pause</Button>
+                    <Button onClick={handleStartStop}>{isPauesed? 'Start' : 'Pause'}</Button>
                     <Button onClick={skipSession}>Skip</Button>
                     <Button className="adjust minus-5" onClick={() => adjustSession(-FIVE_MINUTES)}>-5</Button>
                 </div>

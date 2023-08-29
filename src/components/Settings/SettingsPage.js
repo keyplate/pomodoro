@@ -40,14 +40,14 @@ function SettingsPage() {
             <div className='settings-property'>
                 <label>Auto start break</label>
                 <input name='autoStartBreak'
-                    checked={toMinutes(config.autoStartBreak)}
+                    checked={config.autoStartBreak}
                     type='checkbox'
                     onChange={(e) => dispatch({type: SET_AUTO_START_BREAK, payload: e.target.checked})}/>
             </div>
             <div className='settings-property'>
                 <label>Auto start focus session</label>
                 <input name='autoStartFocus'
-                    checked={toMinutes(config.autoStartFocus)}
+                    checked={config.autoStartFocus}
                     type='checkbox'
                     onChange={(e) => dispatch({type: SET_AUTO_START_FOCUS, payload: e.target.checked})}/>
             </div>

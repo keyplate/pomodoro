@@ -21,7 +21,7 @@ function Settings() {
             <Button className='settings-button' onClick={handleClick}>
                 <FiSettings></FiSettings>
             </Button>
-            {isOpen? <Modal onClose={onClose}><SettingsPage /></Modal> : ''}
+            {isOpen? <Modal onClose={onClose} actionBar={<Button onClick={onClose}>Ok</Button>}><SettingsPage /></Modal> : ''}
         </div>
     );
 }

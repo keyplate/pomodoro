@@ -1,12 +1,16 @@
-.modal-content {
+.modal-content-container {
     position: fixed;
-    inset: 10vh 20vw 30vh 20vw;
-    background: lightgrey;
+    inset: 0;
+    margin: auto;
+    background: whitesmoke;
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
+    justify-content: space-between;
+    align-items: stretch;
+    flex-direction: column;
     z-index: 2;
-    padding: 10px 20px;
+    padding: 10px;
+    width: 25rem;
+    height: 40rem;
 }
 
 .modal-close {
@@ -17,4 +21,9 @@
     height: 100%;
     background: black;
     opacity: 0.4;
+}
+
+.modal-action {
+    align-self: flex-end;
+    margin-bottom: 10px;
 }
