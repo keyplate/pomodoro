@@ -98,6 +98,9 @@ function Timer() {
                     <Button onClick={skipSession}>Skip</Button>
                     <Button className="adjust minus-5" onClick={() => adjustSession(-FIVE_MINUTES)}>-5</Button>
                 </div>
+                <div className="timer-background-focus"></div>
+                <div className="timer-background-break"></div>
+                <div className="timer-background-long-break"></div>
             </div>
         </div>
     );

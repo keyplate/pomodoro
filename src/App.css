@@ -1,5 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/handwriting');
+
+
+
 html {
-    font-family: 'Montserrat', serif;
+    font-family: 'Handwriting', sans-serif;
+    background-color: white;
+    background-image: repeating-linear-gradient(to right,
+                       transparent 0px, transparent 48px,
+                       #d4e5ff 48px, #d4e5ff 49px),
+                       repeating-linear-gradient(to bottom,
+                       transparent 0px, transparent 48px,
+                       #d4e5ff 48px, #d4e5ff 49px);
+    background-size: 50px 50px;
 }
 
 .app-content {

@@ -1,7 +1,8 @@
 .timer-container {
     display: flex;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 18vh;
+    margin-right: 20vw;
 }
 
 .timer {
@@ -11,11 +12,34 @@
     font-weight: 700;
 }
 
+.timer-background-focus,
+.timer-background-break,
+.timer-background-long-break {
+    position: relative;
+    width: 35rem;
+    height: 30rem;
+}
+
+.timer-background-break {
+    top: -52rem;
+    left: 2rem;
+    background-color: #43d3cb;
+    z-index: -2;
+}
+
+.timer-background-focus {
+    top: -24rem;
+    background-color: deeppink;
+    z-index: -1;
+}
+
 .clock {
     font-size: 15vh;
+    color: white;
 }
 
 .buttons {
+    margin-top: 5rem;
     display: flex;
 }
 
