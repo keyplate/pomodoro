@@ -11,6 +11,9 @@ function Provider({ children }) {
         sessionSequence: ['focus', 'break', 'focus', 'break','focus', 'break', 'focus', 'longBreak'],
         autoStartFocus: true,
         autoStartBreak: true,
+        focus_background: '#36469b',
+        break_background: '#43d3cb',
+        long_break_backgound: '#ff1493'
     });
     
     const configState = {

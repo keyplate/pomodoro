@@ -2,7 +2,7 @@
     display: flex;
     justify-content: center;
     margin-top: 18vh;
-    margin-right: 20vw;
+    position: relative;
 }
 
 .timer {
@@ -13,29 +13,28 @@
 }
 
 .timer-background-focus,
-.timer-background-break,
-.timer-background-long-break {
-    position: relative;
-    width: 35rem;
-    height: 30rem;
+.timer-background-break {
+    position: absolute; /* Now these are absolutely positioned */
+    width: 60vmin;
+    height: 53vmin;
 }
 
 .timer-background-break {
-    top: -52rem;
-    left: 2rem;
-    background-color: #43d3cb;
+    top: -6rem;
     z-index: -2;
+    margin-right: 4rem;
 }
 
 .timer-background-focus {
-    top: -24rem;
-    background-color: deeppink;
+    top: -8rem;
     z-index: -1;
 }
 
 .clock {
-    font-size: 15vh;
+    font-size: 15vmin;
     color: white;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .buttons {
@@ -49,4 +48,76 @@
 
 .adjust {
     margin: 0 20px 0 20px;
+}
+
+@media only screen and (max-width: 600px) {
+    .timer-container {
+        margin-top: 10vh;
+        margin-right: 5vw;
+    }
+
+    .timer-background-focus,
+    .timer-background-break {
+        width: 70vmin;
+        height: 63vmin;
+    }
+
+    .timer-background-break {
+        top: -4rem;
+    }
+
+    .timer-background-focus {
+        top: -5rem;
+    }
+
+    .clock {
+        font-size: 17vmin;
+    }
+
+    .buttons {
+        margin-top: 3rem;
+    }
+
+    .button, .adjust {
+        margin: 0 5px;
+    }
+}
+
+/* Tablets */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .timer-container {
+        margin-top: 15vh;
+        margin-right: 10vw;
+    }
+
+    .timer-background-focus,
+    .timer-background-break {
+        width: 45vmax;
+        height: 38vmax;
+    }
+
+    .timer-background-break {
+        top: -3rem;
+    }
+
+    .timer-background-focus {
+        top: -5rem;
+    }
+
+    .clock {
+        font-size: 13vmax;
+    }
+
+    .buttons {
+        margin-top: 2rem;
+    }
+
+    .button, .adjust {
+        margin: 0 8px;
+    }
+
+    .timer {
+        display: flex;
+        flex-direction: column;
+    }
 }
