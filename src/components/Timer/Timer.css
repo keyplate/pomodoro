@@ -1,7 +1,6 @@
 .timer-container {
     display: flex;
-    justify-content: center;
-    margin-top: 18vh;
+    margin: 18vh 0 0 0;
     position: relative;
 }
 
@@ -22,7 +21,7 @@
 .timer-background-break {
     top: -6rem;
     z-index: -2;
-    margin-right: 4rem;
+    margin: 0 4rem 0 0;
 }
 
 .timer-background-focus {
@@ -38,7 +37,7 @@
 }
 
 .buttons {
-    margin-top: 5rem;
+    margin: 5rem 0 0 0;
     display: flex;
 }
 
@@ -52,14 +51,14 @@
 
 @media only screen and (max-width: 600px) {
     .timer-container {
-        margin-top: 10vh;
-        margin-right: 5vw;
+        margin: 15vh 0 0 0;
+        justify-content: center;
     }
 
     .timer-background-focus,
     .timer-background-break {
-        width: 70vmin;
-        height: 63vmin;
+        width: 80vmin;
+        height: 75vmin;
     }
 
     .timer-background-break {
@@ -75,7 +74,7 @@
     }
 
     .buttons {
-        margin-top: 3rem;
+        margin: 3rem 0 0 0;
     }
 
     .button, .adjust {
@@ -86,8 +85,7 @@
 /* Tablets */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .timer-container {
-        margin-top: 15vh;
-        margin-right: 10vw;
+        margin: 15vh 10vw 0 0;
     }
 
     .timer-background-focus,
@@ -109,7 +107,7 @@
     }
 
     .buttons {
-        margin-top: 2rem;
+        margin: 2rem 0 0 0;
     }
 
     .button, .adjust {

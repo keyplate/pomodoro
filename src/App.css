@@ -21,7 +21,7 @@ html {
 }
 
 .timer {
-    flex: 1 0 0;
+    flex: 0;
     display: flex;
     justify-content: center;
 }
