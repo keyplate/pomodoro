@@ -5,18 +5,28 @@ import Clock from '../Clock';
 import './Timer.css';
 import useDidMountEffect from '../../hooks/UseDidMountEffect';
 import SessionPanel from './SessionPanel';
+import useAudio from '../../hooks/UseAudio';
+
+const FIVE_MINUTES = 300;
 
 function Timer() {
     const {config} = useContext(ConfigContext);
-    const {sessionSequence, autoStartFocus, autoStartBreak} = config;
-    const {focus_background, break_background, long_break_backgound} = config;
+    const {
+        sessionSequence,
+        autoStartFocus,
+        autoStartBreak,
+        focus_background,
+        break_background,
+        long_break_backgound} = config;
+
     const [sessionCounter, setSessionCounter] = useState(0);  //Starting session from the first one
     const [timePassed, setTimePassed] = useState(null);
     const [isPauesed, setIsPaused] = useState(true);
+    const [playAlarmSound] = useAudio(config.currentAlarm);
     const intervalRef = useRef(null);
-    const currentSessionName = sessionSequence[sessionCounter]
+
+    const currentSessionName = sessionSequence[sessionCounter];
     const currentSessionDuration = config[currentSessionName];
-    const FIVE_MINUTES = 300;
     let first_color, second_color, third_color;
     
     useDidMountEffect(() => {
@@ -59,7 +69,8 @@ function Timer() {
     };
 
     const handleAutoStart = () => {
-        const shouldStartCurrentBreak = autoStartBreak && currentSessionName.includes('break');
+        const shouldStartCurrentBreak = autoStartBreak &&
+                        (currentSessionName.includes('break') || currentSessionName.includes('longBreak'));
         const shouldStartCurrentFocus = autoStartFocus && currentSessionName.includes('focus');
         if (shouldStartCurrentBreak || shouldStartCurrentFocus) {
             startSession();
@@ -104,6 +115,7 @@ function Timer() {
     if (timeLeft <= 0) {
         setTimePassed(0);
         nextSession();
+        playAlarmSound();
     }
     
     const minutes = Math.floor(timeLeft / 60);

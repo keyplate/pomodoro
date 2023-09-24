@@ -3,6 +3,7 @@ export const SET_BREAK_DURATION = 'break';
 export const SET_LONG_BREAK_DURATION = 'longBreak';
 export const SET_AUTO_START_BREAK = 'autoBreak';
 export const SET_AUTO_START_FOCUS = 'autoFocus';
+export const SET_ALARM_SOUND = 'sound';
 
 
 
@@ -36,6 +37,13 @@ function settingsReducer(config, action) {
             return {
                 ...config,
                 autoStartFocus: action.payload,
+            }
+        }
+        case SET_ALARM_SOUND: {
+            console.log(action.payload)
+            return {
+                ...config,
+                currentAlarm: action.payload
             }
         }
         default: {

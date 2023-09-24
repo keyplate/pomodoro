@@ -13,7 +13,13 @@ function Provider({ children }) {
         autoStartBreak: true,
         focus_background: '#36469b',
         break_background: '#43d3cb',
-        long_break_backgound: '#ff1493'
+        long_break_backgound: '#ff1493',
+        alarmSounds: [
+            {name: 'bird', path: './assets/bird.mp3'},
+            {name: 'airport', path: './assets/airport.mp3'},
+            {name: 'notification', path: './assets/notification.mp3'},
+        ],
+        currentAlarm: './assets/airport.mp3',
     });
     
     const configState = {

@@ -3,13 +3,17 @@ import {
     SET_AUTO_START_FOCUS,
     SET_BREAK_DURATION,
     SET_FOCUS_DURATION,
-    SET_LONG_BREAK_DURATION
+    SET_LONG_BREAK_DURATION,
+    SET_ALARM_SOUND
 } from '../../reducers/SettingsReducer';
 import { useContext } from 'react';
 import { ConfigContext } from '../../contexts/ConfigContext';
 
 function SettingsPage() {
     const {config, dispatch} = useContext(ConfigContext);
+    const alarmSoundsList = config.alarmSounds.map(({name, path}) => {
+        return (<option value={path} key={name}>{name}</option>);
+    });
     
     return (
         <div className='settings-page'>
@@ -50,6 +54,15 @@ function SettingsPage() {
                     checked={config.autoStartFocus}
                     type='checkbox'
                     onChange={(e) => dispatch({type: SET_AUTO_START_FOCUS, payload: e.target.checked})}/>
+            </div>
+            <div className='settings-property'>
+                <label>Alarm sound</label>
+                <select className='settings-property'
+                        name='alarmSound'
+                        defaultValue={config.currentAlarm}
+                        onChange={(e) => dispatch({type: SET_ALARM_SOUND, payload: e.target.value})}>
+                    {alarmSoundsList}
+                </select>
             </div>
         </div>
         );
