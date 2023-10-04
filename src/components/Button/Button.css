@@ -14,7 +14,7 @@
     white-space: nowrap;
     will-change: box-shadow,transform;
     font-weight: 600;
-    font-size: calc(12px + 2vw);
+    font-size: calc(12px + 1.5vw);
 }
 
 .button:hover {
@@ -34,5 +34,6 @@
 @media only screen and (max-width: 600px) {
     .button {
         font-size: calc(14px + 2vw);
+        padding: 8px 8px 5px 8px;
     }
 }

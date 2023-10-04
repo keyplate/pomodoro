@@ -5,9 +5,9 @@ function SessionPanel() {
     
     return (
         <div className='session-panel'>
-            <Button>focus</Button>
-            <Button>break</Button>
-            <Button>long break</Button>
+            <Button className="focus">focus</Button>
+            <Button className="break">break</Button>
+            <Button className="long-break">long break</Button>
         </div>
     );
 }

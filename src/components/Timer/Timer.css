@@ -1,36 +1,26 @@
 .timer-container {
-    display: flex;
-    margin: 18vh 0 0 0;
     position: relative;
+    display: flex;
+    margin: 20px 0 0 0;
 }
 
 .timer {
+    align-self: center;
+    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     font-weight: 700;
 }
 
-.timer-background-focus,
-.timer-background-break {
-    position: absolute; /* Now these are absolutely positioned */
-    width: 60vmin;
-    height: 53vmin;
-}
-
-.timer-background-break {
-    top: -6rem;
-    z-index: -2;
-    margin: 0 4rem 0 0;
-}
-
-.timer-background-focus {
-    top: -8rem;
-    z-index: -1;
+.timer-control {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 30px 0 0 0;
 }
 
 .clock {
-    font-size: 15vmin;
+    font-size: 150px;
     color: white;
     white-space: nowrap;
     overflow: hidden;
@@ -42,35 +32,21 @@
 }
 
 .button {
-    margin: 0 10px 0 10px;
+    margin: 0 1rem 0 1rem;
 }
 
 .adjust {
-    margin: 0 20px 0 20px;
+    margin: 0 1.5rem 0 1.5rem;
 }
 
 @media only screen and (max-width: 600px) {
     .timer-container {
-        margin: 15vh 0 0 0;
+        margin: 1rem 0 0 0;
         justify-content: center;
     }
 
-    .timer-background-focus,
-    .timer-background-break {
-        width: 80vmin;
-        height: 75vmin;
-    }
-
-    .timer-background-break {
-        top: -4rem;
-    }
-
-    .timer-background-focus {
-        top: -5rem;
-    }
-
     .clock {
-        font-size: 17vmin;
+        font-size: 100px;
     }
 
     .buttons {
@@ -78,32 +54,18 @@
     }
 
     .button, .adjust {
-        margin: 0 5px;
+        margin: 0 0.5rem;
     }
 }
 
 /* Tablets */
 @media only screen and (min-width: 601px) and (max-width: 1024px) {
     .timer-container {
-        margin: 15vh 10vw 0 0;
-    }
-
-    .timer-background-focus,
-    .timer-background-break {
-        width: 45vmax;
-        height: 38vmax;
-    }
-
-    .timer-background-break {
-        top: -3rem;
-    }
-
-    .timer-background-focus {
-        top: -5rem;
+        margin: 1rem 0.7rem 0 0;
     }
 
     .clock {
-        font-size: 13vmax;
+        font-size: 140px;
     }
 
     .buttons {
@@ -111,7 +73,7 @@
     }
 
     .button, .adjust {
-        margin: 0 8px;
+        margin: 0 0.5rem;
     }
 
     .timer {

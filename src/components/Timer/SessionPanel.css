@@ -1,8 +1,24 @@
 .session-panel {
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
-    margin: 0 12vh 0 0;
+    justify-content: flex-start;
+    margin: 12vh 60px 0 20px;
+}
+
+.session-panel .focus {
+    background-color: #36469b;
+}
+
+.session-panel .break {
+    background-color: #43d3cb;
+}
+
+.session-panel .long-break {
+    background-color: #ff1493;
+}
+
+.session-panel .button {
+    margin: 0.5rem 0;
 }
 
 @media only screen and (max-width: 600px) {
@@ -17,5 +33,11 @@
 
     .session-panel .button{
         flex-grow: 0.75;
+    }
+}
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .session-panel{
+        margin: 12vh 60px 0 20px;
     }
 }

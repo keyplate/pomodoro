@@ -1,0 +1,58 @@
+.timer-background {
+    margin: 20vh 0 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.timer-background-focus,
+.timer-background-break {
+    position: absolute;
+    width: 540px;
+    height: 470px;
+}
+
+.timer-background-break {
+    margin: 40px 0 0 40px;
+    z-index: -2;
+}
+
+.timer-background-focus {
+    z-index: -1;
+}
+
+@media only screen and (max-width: 600px) {
+    .timer-background {
+        margin: 20vh 0 0 0;
+    }
+
+    .timer-container {
+        justify-content: center;
+    }
+
+    .timer-background-focus,
+    .timer-background-break {
+        max-width: 390px;
+        width: 86vw;
+        height: 340px;
+    }
+
+    .timer-background-break {
+        margin: 30px 0 0 30px;
+    }
+
+}
+
+
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+    .timer-container {
+        margin: 1rem 0.7rem 0 0;
+    }
+
+    .timer-background-focus,
+    .timer-background-break {
+        max-width: 470px;
+        height: 410px;
+    }
+
+}
