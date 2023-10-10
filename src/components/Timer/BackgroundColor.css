@@ -3,6 +3,10 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 470px; /*extrinsic sizing is
+                    required due to the clock
+                    changing size of the shared
+                    container*/
 }
 
 .timer-background-focus,

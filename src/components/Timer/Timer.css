@@ -6,7 +6,6 @@
 
 .timer {
     align-self: center;
-    justify-self: center;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,10 +73,5 @@
 
     .button, .adjust {
         margin: 0 0.5rem;
-    }
-
-    .timer {
-        display: flex;
-        flex-direction: column;
     }
 }

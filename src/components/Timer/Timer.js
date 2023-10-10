@@ -1,12 +1,12 @@
 import { useContext, useRef, useState } from 'react';
 import { ConfigContext } from '../../contexts/ConfigContext';
-import Clock from '../Clock';
 import useDidMountEffect from '../../hooks/UseDidMountEffect';
 import SessionPanel from './SessionPanel';
 import useAudio from '../../hooks/UseAudio';
-import './Timer.css';
-import TimerControlPanel from './TimerControlPanel';
 import BackgroundColors from './BackgroundColors';
+import TimerControlPanel from './TimerControlPanel';
+import Clock from './Clock';
+import './Timer.css';
 
 function Timer() {
     const {config} = useContext(ConfigContext);
@@ -52,6 +52,18 @@ function Timer() {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
         setIsPaused(true);
+    };
+
+    const pickSession = (sessionName) => {
+        if (sessionName === currentSessionName) {
+            startSession();
+        }
+        /*
+        * if focus and current is break or long break then just skip session
+        * if break or long break and current is focus then just skip session
+        * if long break and current is long break
+        * */
+
     };
 
     const nextSession = () => {
@@ -100,7 +112,7 @@ function Timer() {
 
     return (
         <div className='timer-container'>
-            <SessionPanel />
+            <SessionPanel setSessionCounter={setSessionCounter} />
             <BackgroundColors currentSessionName={currentSessionName} sessionCounter={sessionCounter}>
             <div className='timer'>
                 <Clock minutes={minutes} seconds={seconds}></Clock>
